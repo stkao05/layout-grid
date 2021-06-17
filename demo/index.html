@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="../src/index.js"></script>
+  </head>
+  <body>
+    <h1>Hello world</h1>
+
+    <style>
+      .grid {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1000000;
+      }
+    </style>
+
+    <layout-grid
+      class="grid"
+      count="6"
+      direction="columns"
+      type="stretch"
+      gutter="10px"
+    >
+    </layout-grid>
+
+    <layout-grid
+      class="grid"
+      count="10"
+      direction="rows"
+      color="rgba(0, 0, 256, 0.1)"
+      type="stretch"
+      gutter="10px"
+    >
+    </layout-grid>
+  </body>
+</html>
