@@ -106,6 +106,43 @@ class LayoutGrid extends HTMLElement {
       style[gap] = attr.gutter;
     }
 
+    switch (attr.type) {
+      case "stretch": {
+        break;
+      }
+      case "top": {
+        if (attr.direction == "rows") {
+          style.alignContent = "start";
+        }
+        break;
+      }
+      case "right": {
+        if (attr.direction == "columns") {
+          style.justifyContent = "end";
+        }
+        break;
+      }
+      case "bottom": {
+        if (attr.direction == "rows") {
+          style.alignContent = "end";
+        }
+        break;
+      }
+      case "left": {
+        if (attr.direction == "columns") {
+          style.justifyContent = "start";
+        }
+        break;
+      }
+      case "center": {
+        if (attr.direction == "columns") {
+          style.justifyContent = "center";
+        } else {
+          style.alignContent = "center";
+        }
+      }
+    }
+
     if (attr.margin || attr.offset) {
       const val = attr.type === "stretch" ? margin : offset;
       style.padding =
