@@ -1,3 +1,38 @@
+const attributeDef = {
+  direction: {
+    require: true,
+    value: ["columns", "rows"],
+  },
+  count: {
+    require: true,
+    value: "number",
+  },
+  type: {
+    require: true,
+    value: ["top", "bottom", "center", "stretch"],
+  },
+  margin: {
+    require: false,
+    value: (v) => CSS.supports("padding", v),
+  },
+  offset: {
+    require: false,
+    value: (v) => CSS.supports("padding", v),
+  },
+  gutter: {
+    require: true,
+    value: (v) => CSS.supports("column-gap", v),
+  },
+  width: {
+    require: false,
+    value: (v) => CSS.supports("width", v),
+  },
+  height: {
+    require: false,
+    value: (v) => CSS.supports("height", v),
+  },
+};
+
 /*
  * direction: "columns" | "rows";
  * count: number;
@@ -19,6 +54,14 @@ class LayoutGrid extends HTMLElement {
     this.render();
   }
 
+  static get observedAttributes() {
+    return Object.keys(attributeDef);
+  }
+
+  attributeChangedCallback() {
+    this.render();
+  }
+
   render() {
     if (!this.validateAttr()) {
       return;
@@ -35,7 +78,6 @@ class LayoutGrid extends HTMLElement {
     };
 
     if (attr.color === "" || attr.color === null) {
-      console.log(attr.color);
       attr.color = "rgba(256, 0, 0, 0.1)";
     }
 
@@ -52,7 +94,7 @@ class LayoutGrid extends HTMLElement {
       .map(() =>
         attr.type === "stretch"
           ? "auto"
-          : `${direction === "columns" ? width : height}px`
+          : `${attr.direction === "columns" ? attr.width : attr.height}px`
       )
       .join(" ");
 
@@ -69,19 +111,23 @@ class LayoutGrid extends HTMLElement {
         direction === "columns" ? `${0} ${val}px` : `${0} ${val}px`;
     }
 
-    const container = document.createElement("div");
+    if (this.container) {
+      this.container.remove();
+    }
+
+    this.container = document.createElement("div");
     for (let i = 0; i < attr.count; i++) {
       const item = document.createElement("div");
       item.style.backgroundColor = attr.color;
 
-      container.append(item);
+      this.container.append(item);
     }
 
     for (let s in style) {
-      container.style[s] = style[s];
+      this.container.style[s] = style[s];
     }
 
-    this.shadowRoot.append(container);
+    this.shadowRoot.append(this.container);
   }
 
   validateAttr() {
@@ -134,38 +180,3 @@ function validateAttr(def, attrValue) {
 
   return true;
 }
-
-const attributeDef = {
-  direction: {
-    require: true,
-    value: ["columns", "rows"],
-  },
-  count: {
-    require: true,
-    value: "number",
-  },
-  type: {
-    require: true,
-    value: ["top", "bottom", "center", "stretch"],
-  },
-  margin: {
-    require: false,
-    value: (v) => CSS.supports("padding", v),
-  },
-  offset: {
-    require: false,
-    value: (v) => CSS.supports("padding", v),
-  },
-  gutter: {
-    require: true,
-    value: (v) => CSS.supports("column-gap", v),
-  },
-  width: {
-    require: false,
-    value: (v) => CSS.supports("width", v),
-  },
-  height: {
-    require: false,
-    value: (v) => CSS.supports("height", v),
-  },
-};
