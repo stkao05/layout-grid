@@ -38,7 +38,7 @@
       <div>
         <label>Direction</label>
         <select name="grid-direction" id="grid-direction">
-          <option value="rows">rows</option>
+          <option selected value="rows">rows</option>
           <option value="columns">columns</option>
         </select>
       </div>
@@ -46,7 +46,10 @@
         <label>Type</label>
         <select name="grid-type" id="grid-type">
           <option value="stretch">stretch</option>
-          <option value="top">top</option>
+          <option selected value="top">top</option>
+          <option selected value="right">right</option>
+          <option selected value="bottom">bottom</option>
+          <option selected value="left">left</option>
           <option value="center">center</option>
           <option value="bottom">bottom</option>
         </select>
@@ -66,20 +69,19 @@
         <label>Gutter</label>
         <input type="text" value="10px" name="grid-gutter" id="grid-gutter" />
       </div>
+      <div>
+        <label>Height</label>
+        <input type="text" value="20px" name="grid-height" id="grid-height" />
+      </div>
+      <div>
+        <label>Width</label>
+        <input type="text" value="10px" name="grid-width" id="grid-width" />
+      </div>
     </div>
 
     <main>
       <div class="grid-container">
-        <layout-grid
-          id="layout-grid"
-          color="rgb(0, 0, 0, 0.1)"
-          class="grid"
-          count="6"
-          direction="columns"
-          type="stretch"
-          gutter="10px"
-        >
-        </layout-grid>
+        <layout-grid id="layout-grid" color="rgb(0, 0, 0, 0.1)"> </layout-grid>
       </div>
     </main>
   </body>

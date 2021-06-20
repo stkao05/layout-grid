@@ -9,7 +9,7 @@ const attributeDef = {
   },
   type: {
     require: true,
-    value: ["top", "bottom", "center", "stretch"],
+    value: ["top", "bottom", "left", "right", "center", "stretch"],
   },
   margin: {
     require: false,
@@ -87,15 +87,16 @@ class LayoutGrid extends HTMLElement {
       height: "100%",
     };
 
+    const length =
+      attr.type === "stretch"
+        ? "auto"
+        : `${attr.direction === "columns" ? attr.width : attr.height}`;
+
     const tmpl =
       attr.direction === "columns" ? "gridTemplateColumns" : "gridTemplateRows";
 
     const tmplValue = range(attr.count)
-      .map(() =>
-        attr.type === "stretch"
-          ? "auto"
-          : `${attr.direction === "columns" ? attr.width : attr.height}px`
-      )
+      .map(() => length)
       .join(" ");
 
     style[tmpl] = tmplValue;
