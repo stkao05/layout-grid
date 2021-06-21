@@ -1,5 +1,5 @@
 const attributeDef = {
-  direction: {
+  type: {
     require: true,
     value: ["columns", "rows"],
   },
@@ -7,7 +7,7 @@ const attributeDef = {
     require: true,
     value: "number",
   },
-  type: {
+  position: {
     require: true,
     value: ["top", "bottom", "left", "right", "center", "stretch"],
   },
@@ -34,10 +34,10 @@ const attributeDef = {
 };
 
 /*
- * direction: "columns" | "rows";
+ * type: "columns" | "rows";
  * count: number;
  * color: string;
- * type: "top" | "bottom" | "center" | "stretch";
+ * position: "top" | "bottom" | "center" | "stretch";
  * margin: number | string;
  * offset: number | string;
  * gutter: number | string;
@@ -68,9 +68,9 @@ class LayoutGrid extends HTMLElement {
     }
 
     const attr = {
-      direction: this.getAttribute("direction"),
-      count: parseInt(this.getAttribute("count")),
       type: this.getAttribute("type"),
+      count: parseInt(this.getAttribute("count")),
+      position: this.getAttribute("position"),
       gutter: this.getAttribute("gutter"),
       color: this.getAttribute("color"),
       width: this.getAttribute("width"),
@@ -91,12 +91,12 @@ class LayoutGrid extends HTMLElement {
     };
 
     const length =
-      attr.type === "stretch"
+      attr.position === "stretch"
         ? "auto"
-        : `${attr.direction === "columns" ? attr.width : attr.height}`;
+        : `${attr.type === "columns" ? attr.width : attr.height}`;
 
     const tmpl =
-      attr.direction === "columns" ? "gridTemplateColumns" : "gridTemplateRows";
+      attr.type === "columns" ? "gridTemplateColumns" : "gridTemplateRows";
 
     const tmplValue = range(attr.count)
       .map(() => length)
@@ -105,37 +105,37 @@ class LayoutGrid extends HTMLElement {
     style[tmpl] = tmplValue;
 
     if (attr.gutter) {
-      const gap = attr.direction === "columns" ? "columnGap" : "rowGap";
+      const gap = attr.type === "columns" ? "columnGap" : "rowGap";
       style[gap] = attr.gutter;
     }
 
-    switch (attr.type) {
+    switch (attr.position) {
       case "top": {
-        if (attr.direction == "rows") {
+        if (attr.type == "rows") {
           style.alignContent = "start";
         }
         break;
       }
       case "right": {
-        if (attr.direction == "columns") {
+        if (attr.type == "columns") {
           style.justifyContent = "end";
         }
         break;
       }
       case "bottom": {
-        if (attr.direction == "rows") {
+        if (attr.type == "rows") {
           style.alignContent = "end";
         }
         break;
       }
       case "left": {
-        if (attr.direction == "columns") {
+        if (attr.type == "columns") {
           style.justifyContent = "start";
         }
         break;
       }
       case "center": {
-        if (attr.direction == "columns") {
+        if (attr.type == "columns") {
           style.justifyContent = "center";
         } else {
           style.alignContent = "center";
@@ -144,9 +144,8 @@ class LayoutGrid extends HTMLElement {
     }
 
     if (attr.margin || attr.offset) {
-      const val = attr.type === "stretch" ? attr.margin : attr.offset;
-      style.padding =
-        attr.direction === "columns" ? `${0} ${val}` : `${val} ${0}`;
+      const val = attr.position === "stretch" ? attr.margin : attr.offset;
+      style.padding = attr.type === "columns" ? `${0} ${val}` : `${val} ${0}`;
     }
 
     if (this.container) {
