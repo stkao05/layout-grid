@@ -1,23 +1,30 @@
 window.addEventListener("DOMContentLoaded", (event) => {
+  const control = document.querySelector("#control");
   const grid = document.querySelector("#layout-grid");
+  const state = {};
 
-  function renderGrid() {
+  function getState() {
     document.querySelectorAll("select, input").forEach((input) => {
       const name = input.name.replace("grid-", "");
-      let value = input.value;
-
       const unit = input.getAttribute("unit");
-      if (unit) {
-        value = `${value}${unit}`;
-      }
+      const value = unit ? `${input.value}${unit}` : input.value;
 
-      grid.setAttribute(name, value);
+      state[name] = value;
     });
   }
 
-  renderGrid();
+  function updateGrid() {
+    for (const name in state) {
+      grid.setAttribute(name, state[name]);
+      control.setAttribute(name, state[name]);
+    }
+  }
 
-  document.querySelector(".control").addEventListener("change", () => {
-    renderGrid();
+  control.addEventListener("change", () => {
+    getState();
+    updateGrid();
   });
+
+  getState();
+  updateGrid();
 });
