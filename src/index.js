@@ -75,6 +75,8 @@ class LayoutGrid extends HTMLElement {
       color: this.getAttribute("color"),
       width: this.getAttribute("width"),
       height: this.getAttribute("height"),
+      offset: this.getAttribute("offset"),
+      margin: this.getAttribute("margin"),
     };
 
     if (attr.color === "" || attr.color === null) {
@@ -85,6 +87,7 @@ class LayoutGrid extends HTMLElement {
       display: "grid",
       width: "100%",
       height: "100%",
+      boxSizing: "border-box",
     };
 
     const length =
@@ -141,9 +144,9 @@ class LayoutGrid extends HTMLElement {
     }
 
     if (attr.margin || attr.offset) {
-      const val = attr.type === "stretch" ? margin : offset;
+      const val = attr.type === "stretch" ? attr.margin : attr.offset;
       style.padding =
-        direction === "columns" ? `${0} ${val}px` : `${0} ${val}px`;
+        attr.direction === "columns" ? `${0} ${val}` : `${val} ${0}`;
     }
 
     if (this.container) {
