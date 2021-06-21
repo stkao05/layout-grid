@@ -107,9 +107,6 @@ class LayoutGrid extends HTMLElement {
     }
 
     switch (attr.type) {
-      case "stretch": {
-        break;
-      }
       case "top": {
         if (attr.direction == "rows") {
           style.alignContent = "start";

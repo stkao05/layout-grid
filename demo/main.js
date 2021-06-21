@@ -4,7 +4,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
   function renderGrid() {
     document.querySelectorAll("select, input").forEach((input) => {
       const name = input.name.replace("grid-", "");
-      const value = input.value;
+      let value = input.value;
+
+      const unit = input.getAttribute("unit");
+      if (unit) {
+        value = `${value}${unit}`;
+      }
+
       grid.setAttribute(name, value);
     });
   }

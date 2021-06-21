@@ -9,31 +9,6 @@
     <link rel="stylesheet" href="./style.css" type="text/css" />
   </head>
   <body>
-    <style>
-      main {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100vw;
-        height: 100vh;
-      }
-
-      .grid-container {
-        width: 500px;
-        height: 500px;
-        position: relative;
-        outline: 1px solid black;
-      }
-
-      layout-grid {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
-    </style>
-
     <div class="control">
       <div>
         <label>Direction</label>
@@ -66,22 +41,58 @@
       </div>
       <div>
         <label>Gutter</label>
-        <input type="text" value="10px" name="grid-gutter" id="grid-gutter" />
+        <input
+          type="number"
+          value="10"
+          name="grid-gutter"
+          id="grid-gutter"
+          unit="px"
+        />
       </div>
       <div>
         <label>Height</label>
-        <input type="text" value="20px" name="grid-height" id="grid-height" />
+        <input
+          type="number"
+          value="20"
+          name="grid-height"
+          id="grid-height"
+          unit="px"
+        />
       </div>
       <div>
         <label>Width</label>
-        <input type="text" value="10px" name="grid-width" id="grid-width" />
+        <input
+          type="number"
+          value="10"
+          name="grid-width"
+          id="grid-width"
+          unit="px"
+        />
+      </div>
+      <div>
+        <label>Margin</label>
+        <input
+          type="number"
+          value="0"
+          name="grid-margin"
+          id="grid-margin"
+          unit="px"
+        />
+      </div>
+      <div>
+        <label>Offset</label>
+        <input
+          type="number"
+          value="0"
+          name="grid-offset"
+          id="grid-offset"
+          unit="px"
+        />
       </div>
     </div>
 
-    <main>
-      <div class="grid-container">
-        <layout-grid id="layout-grid" color="rgb(0, 0, 0, 0.1)"> </layout-grid>
-      </div>
-    </main>
+    <div class="grid-container">
+      <layout-grid id="layout-grid" color="rgb(0, 0, 0, 0.1)"> </layout-grid>
+    </div>
   </body>
 </html>
