@@ -15,38 +15,38 @@
 
 ## Attributes
 
-### `type`
+#### `type`
 
 `columns` or `rows`
 
-### `color`
+#### `color`
 
 Color of the columns or rows.
 
-### `count`
+#### `count`
 
 Number of rows or columns
 
-### `position`
+#### `position`
 
 Placement of grid, could be one of the values: `top`, `bottom`, `left`, `right`, `center`, `stretch`
 
-### `margin`
+#### `margin`
 
 The outter spacing of streched grid (`position="stretch`)
 
-### `offset`
+#### `offset`
 
 Position offet of grid, used only when the grid `position` has one of the values: `top`, `bottom`, `left`, `right`
 
-### `gutter`
+#### `gutter`
 
 Space between columns or rows
 
-### `width`
+#### `width`
 
 Width of each column
 
-### `height`
+#### `height`
 
 Height of each row
