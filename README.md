@@ -1,4 +1,4 @@
-# <layout-grid> element
+# `<layout-grid>`
 
 ## Usage
 
