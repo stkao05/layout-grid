@@ -4,10 +4,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
   const state = {};
 
   function getState() {
-    document.querySelectorAll("select, input").forEach((input) => {
-      const name = input.name.replace("grid-", "");
-      const unit = input.getAttribute("unit");
-      const value = unit ? `${input.value}${unit}` : input.value;
+    document.querySelectorAll("select, input").forEach((field) => {
+      const name = field.name.replace("grid-", "");
+      const unit = field.getAttribute("unit");
+      const value = unit ? `${field.value}${unit}` : field.value;
 
       state[name] = value;
     });

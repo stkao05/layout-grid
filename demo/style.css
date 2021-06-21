@@ -47,26 +47,26 @@ select {
   display: none;
 }
 
-#control[position="top"] #input-margin,
-#control[position="right"] #input-margin,
-#control[position="left"] #input-margin,
-#control[position="bottom"] #input-margin {
+#control[position="top"] #field-margin,
+#control[position="right"] #field-margin,
+#control[position="left"] #field-margin,
+#control[position="bottom"] #field-margin {
   display: none;
 }
 
-#control[position="center"] #input-margin,
-#control[position="center"] #input-offset {
+#control[position="center"] #field-margin,
+#control[position="center"] #field-offset {
   display: none;
 }
 
-#control[position="stretch"] #input-offset,
-#control[position="stretch"] #input-height,
-#control[position="stretch"] #input-width {
+#control[position="stretch"] #field-offset,
+#control[position="stretch"] #field-height,
+#control[position="stretch"] #field-width {
   display: none;
 }
 
-#control[type="rows"] #input-width,
-#control[type="columns"] #input-height {
+#control[type="rows"] #field-width,
+#control[type="columns"] #field-height {
   display: none;
 }
 
