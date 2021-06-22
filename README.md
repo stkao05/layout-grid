@@ -68,3 +68,14 @@ Type: [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
 Height of each row
 
 Type: [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
+
+
+### `shortcut`
+
+Activate shortcut support. Shortcut support allow you to show / hide the grid via `Ctrl + g`
+
+Type: boolean (present of attribute is true, false if absent)
+
+```html
+<layout-grid shortcut></layout-grid>
+```

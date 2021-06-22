@@ -37,10 +37,15 @@ class LayoutGrid extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this.handleShortcut = this.handleShortcut.bind(this);
   }
 
   connectedCallback() {
     this.render();
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener("keydown", this.handleShortcut);
   }
 
   static get observedAttributes() {
@@ -49,6 +54,22 @@ class LayoutGrid extends HTMLElement {
 
   attributeChangedCallback() {
     this.render();
+
+    if (this.getAttribute("shortcut") !== null) {
+      document.addEventListener("keydown", this.handleShortcut);
+    } else {
+      document.removeEventListener("keydown", this.handleShortcut);
+    }
+  }
+
+  handleShortcut(event) {
+    if (event.key === "g" && event.ctrlKey) {
+      if (this.style.display == "none") {
+        this.style.display = "";
+      } else {
+        this.style.display = "none";
+      }
+    }
   }
 
   render() {
