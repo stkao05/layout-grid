@@ -4,9 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>&ltlayout-grid&gt demo</title>
-    <script src="https://cdn.jsdelivr.net/npm/@stkao05/layout-grid/src/index.js"></script>
-    <script src="./main.js"></script>
     <link rel="stylesheet" href="./style.css" type="text/css" />
+    <script charset="utf-8">
+      (function () {
+        var head = document.getElementsByTagName("head")[0];
+        var script = document.createElement("script");
+        script.src =
+          location.origin === "file://"
+            ? "../src/index.js"
+            : "https://cdn.jsdelivr.net/npm/@stkao05/layout-grid/src/index.js";
+
+        head.append(script);
+      })();
+    </script>
+    <script src="./main.js"></script>
   </head>
   <body>
     <div id="control">
