@@ -1,12 +1,43 @@
 # `<layout-grid>`
 
+`<layout-grid>` is a custom element that displays an overlaying grid on the page to allow you to layout your elements with more precision.
+
+[Demo](https://stkao05.github.io/layout-grid/)
+
+
 ## Usage
 
+### Load module
+You can load the module from the CDN distribution with the script tag
+
+```
+<script src="https://cdn.jsdelivr.net/npm/@stkao05/layout-grid/src/index.js"></script>
+```
+
+Or you can import the npm module from your code
+
+```
+import "@stkao05/layout-grid";
+```
+
+### Mockup
+Create a `<layout-grid>` element in your page. By default, `<layout-grid>` element does not have width or height style set, and this provides you with the flexibility on how you want to position the element. You need to specify its style explicitly for it to display properly on the page.
+
 ```html
+// example of a full-screen 12 columns grid
+<style type="text/css">
+	layout-grid {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 100vw;
+	  min-height: 100vh;
+	}
+</style>
+
 <layout-grid
-  id="layout-grid"
   color="rgb(0, 0, 0, 0.1)"
-  type="rows"
+  type="columns"
   position="stretch"
   count="12"
   gutter="10px"

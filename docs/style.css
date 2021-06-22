@@ -70,15 +70,8 @@ select {
   display: none;
 }
 
-#grid-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-}
-
 layout-grid {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
