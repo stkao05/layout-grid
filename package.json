@@ -1,9 +1,16 @@
 {
   "name": "@stkao05/layout-grid",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {},
+  "version": "0.0.2",
+  "keywords": [
+    "grid",
+    "layout grid",
+    "layout-grid",
+    "columns",
+    "row"
+  ],
+  "description": "<layout-grid> is a custom element that displays an overlaying grid on the page to allow you to layout your elements with more precision.",
+  "homepage": "https://github.com/stkao05/layout-grid",
+  "main": "src/index.js",
   "author": "Steven Kao",
   "license": "ISC"
 }
