@@ -33,17 +33,6 @@ const attributeDef = {
   },
 };
 
-/*
- * type: "columns" | "rows";
- * count: number;
- * color: string;
- * position: "top" | "bottom" | "center" | "stretch";
- * margin: number | string;
- * offset: number | string;
- * gutter: number | string;
- * width: number | string;
- * height: number | string;
- */
 class LayoutGrid extends HTMLElement {
   constructor() {
     super();
