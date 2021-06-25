@@ -31,7 +31,8 @@ Create a `<layout-grid>` element in your page. By default, `<layout-grid>` eleme
     top: 0;
     left: 0;
     width: 100vw;
-    min-height: 100vh;
+    height: 100vh;
+    z-index: 10000;
   }
 </style>
 
@@ -57,15 +58,21 @@ You can toggle hide and show of grid via the shortcut `ctrl + g`. By default, sh
 
 ### `type`
 
-Type of grid, could be either a rows grid or a columns grid
+Type of grid, could be either a rows grid or a columns grid. 
 
 Type: `columns` | `rows`
 
 ### `color`
 
-Color of the columns or rows; could be any valid 
+Color of the columns or rows.
 
-Type: [CSS color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).
+Type: [CSS color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value)
+
+### `outline`
+
+Outline of  columns or rows
+
+Type: [CSS outline value](https://developer.mozilla.org/en-US/docs/Web/CSS/outline).
 
 ### `count`
 

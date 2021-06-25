@@ -83,11 +83,14 @@ class LayoutGrid extends HTMLElement {
       position: this.getAttribute("position"),
       gutter: this.getAttribute("gutter"),
       color: this.getAttribute("color"),
+      outline: this.getAttribute("outline"),
       width: this.getAttribute("width"),
       height: this.getAttribute("height"),
       offset: this.getAttribute("offset"),
       margin: this.getAttribute("margin"),
     };
+
+      console.log(attr);
 
     if (attr.color === "" || attr.color === null) {
       attr.color = "rgba(256, 0, 0, 0.1)";
@@ -165,7 +168,13 @@ class LayoutGrid extends HTMLElement {
     this.container = document.createElement("div");
     for (let i = 0; i < attr.count; i++) {
       const item = document.createElement("div");
-      item.style.backgroundColor = attr.color;
+
+      if (attr.color) {
+        item.style.backgroundColor = attr.color;
+      }
+      if (attr.outline) {
+        item.style.outline = attr.outline;
+      }
 
       this.container.append(item);
     }
