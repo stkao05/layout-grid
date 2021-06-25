@@ -58,70 +58,72 @@ You can toggle hide and show of grid via the shortcut `ctrl + g`. By default, sh
 
 ### `type`
 
-Type of grid, could be either a rows grid or a columns grid. 
+Type of grid, could be either a rows grid or a columns grid.  
 
-Type: `columns` | `rows`
+- Required  
+- Type: `columns` | `rows`. 
 
-### `color`
-
-Color of the columns or rows.
-
-Type: [CSS color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value)
-
-### `outline`
-
-Outline of  columns or rows
-
-Type: [CSS outline value](https://developer.mozilla.org/en-US/docs/Web/CSS/outline).
 
 ### `count`
 
 Number of rows or columns
 
-Type: number
+- Required
+- Type: number
+
 
 ### `position`
-
 Placement of grid, could be one of the values: 
+- Required
+- Type: `top` | `top` | `bottom` |`left` | `right` | `center` | `stretch`
 
-Type: `top` | `top` | `bottom` |`left` | `right` | `center` | `stretch`
-
-### `margin`
-
-The outter spacing of streched grid (`position="stretch`)
-
-Type: [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
-
-### `offset`
-
-Position offet of grid, used only when the grid `position` has one of the values: `top`, `bottom`, `left`, `right`
-
-Type: [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
 
 ### `gutter`
-
 Space between columns or rows
+- Required
+- Type: [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
 
-Type: [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
 
 ### `width`
-
 Width of each column
+- Required when `type=columns' and `position != stretch`
+- Type: [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
 
-Type: [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
 
 ### `height`
-
 Height of each row
+- Required when `type=rows` and `position != stretch`
+- Type: [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
 
-Type: [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
+
+### `color`
+Background color of the columns or rows.  
+- Optional, default set to `rgba(256, 0, 0, 0.1)`
+- Type: [CSS color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value)
+
+
+### `outline`
+Outline of  columns or rows
+- Optional. No outline style is set by default.
+- Type: [CSS outline value](https://developer.mozilla.org/en-US/docs/Web/CSS/outline).
+
+
+### `margin`
+The outter spacing of streched grid (`position="stretch`)
+- Optional
+- Type: [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
+
+
+### `offset`
+Position offet of grid, used only when the grid `position` has one of the values: `top`, `bottom`, `left`, `right`
+- Optional
+- Type: [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
 
 
 ### `shortcut`
-
 Activate shortcut support. Shortcut support allow you to show / hide the grid via `ctrl + g`
-
-Type: boolean (present of attribute is true, false if absent)
+- Optional. No shortcut support is enabled by default
+- Type: [boolean attribute](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes) (present of attribute is true, false if absent)
 
 ```html
 <layout-grid shortcut></layout-grid>
