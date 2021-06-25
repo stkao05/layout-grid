@@ -21,10 +21,11 @@ import "@stkao05/layout-grid";
 ```
 
 ### Mockup
-Create a `<layout-grid>` element in your page. By default, `<layout-grid>` element does not have width or height style set, and this provides you with the flexibility on how you want to position the element. You need to specify its style explicitly for it to display properly on the page.
+Create a `<layout-grid>` element in your page. By default, `<layout-grid>` element does not have width or height style set, so you need to specify its style explicitly for it to display properly on the page. You have the flexibility decide the layout grid placement and size.
 
+Here is an example mock up of a full-screen 12 columns grid
 ```html
-// example of a full-screen 12 columns grid
+
 <style type="text/css">
   layout-grid {
     position: fixed;
