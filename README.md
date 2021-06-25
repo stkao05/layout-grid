@@ -120,6 +120,12 @@ Position offet of grid, used only when the grid `position` has one of the values
 - Type: [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
 
 
+### `off`
+Hide the grid
+- Optional
+- Type: [boolean attribute](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes) (present of attribute is true, false if absent)
+
+
 ### `shortcut`
 Activate shortcut support. Shortcut support allow you to show / hide the grid via `ctrl + g`
 - Optional. No shortcut support is enabled by default
