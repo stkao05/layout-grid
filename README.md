@@ -48,7 +48,7 @@ Here is an example mock up of a full-screen 12 columns grid
 
 ### Shortcut Support
 
-You can toggle hide and show of grid via the shortcut `ctrl + g`. By default, shortcut support is turn off, and you can enable via the `shortcut` attribute.
+You can toggle hide and show of grid with the shortcut `ctrl + g`. Enable shortcut support with the `shortcut` attribute.
 
 ```html
 <layout-grid shortcut />
@@ -74,7 +74,7 @@ Number of rows or columns
 
 
 ### `position`
-Placement of grid, could be one of the values: 
+Placement of grid
 - Required
 - Type: `top` | `top` | `bottom` |`left` | `right` | `center` | `stretch`
 
