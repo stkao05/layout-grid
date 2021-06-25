@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Grid system</title>
+    <script charset="utf-8">
+      (function () {
+        var head = document.getElementsByTagName("head")[0];
+        var script = document.createElement("script");
+        script.src =
+          location.origin === "file://"
+            ? "../src/index.js"
+            : "https://cdn.jsdelivr.net/npm/@stkao05/layout-grid/src/index.js";
+
+        head.append(script);
+      })();
+    </script>
+  </head>
+  <body>
+    <style type="text/css" media="screen">
+      :root {
+        --gutter: 1rem;
+        --column: calc(
+          (100% - (var(--column-count) - 1) * var(--gutter)) /
+            var(--column-count)
+        );
+        --column-count: 4;
+        --block-height: calc(4.5 * var(--gutter));
+      }
+
+      html {
+        font-size: 30px;
+        font-family: "Helvetica";
+      }
+
+      h1 {
+        font-weight: bold;
+        font-size: 4.3rem;
+      }
+
+      layout-grid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        z-index: 100;
+      }
+
+      layout-grid[type="rows"] {
+        overflow: hidden;
+      }
+
+      body {
+        margin: 0;
+        background: #ff5001;
+      }
+
+      main {
+        position: relative;
+        width: 960px;
+        height: 100vh;
+        margin: 0 auto;
+      }
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+      }
+
+      .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 200;
+      }
+
+      .columns {
+        margin-left: 1rem;
+      }
+
+      .columns:first-child {
+        margin-left: 0;
+      }
+
+      .one.columns {
+        width: calc(var(--column));
+      }
+
+      .two.columns {
+        width: calc(2 * var(--column) + var(--gutter));
+      }
+
+      .offset-by-two.columns {
+        margin-left: calc(2 * var(--column) + 2 * var(--gutter));
+      }
+
+      .author {
+        padding-left: calc(2 * (var(--column) + var(--gutter)));
+        height: calc(2 * var(--block-height) + 2 * var(--gutter));
+      }
+
+      .title {
+        height: calc(var(--block-height) + var(--gutter));
+        margin: 0;
+        position: relative;
+        left: -8px;
+        top: -24px;
+      }
+
+      .sub-title {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        top: -5px;
+      }
+
+      .sub-title > div {
+        width: calc(2 * var(--column) + 2 * var(--gutter));
+      }
+    </style>
+
+    <main class="container">
+      <div class="content">
+        <div class="author"></div>
+        <h1 class="title">Layout Grid</h1>
+        <div class="sub-title">
+          <div class="two columns"></div>
+          <div class="two columns">
+            A custom element that displays an overlaying grid on the page to
+            help you archive layout precision.
+          </div>
+        </div>
+      </div>
+      <layout-grid
+        type="columns"
+        position="stretch"
+        count="4"
+        gutter="1rem"
+        outline="1px solid white"
+        shortcut
+      >
+      </layout-grid>
+      <layout-grid
+        type="rows"
+        position="top"
+        count="10"
+        height="4.5rem"
+        gutter="1rem"
+        outline="1px solid white"
+        shortcut
+      >
+      </layout-grid>
+    </main>
+  </body>
+</html>
