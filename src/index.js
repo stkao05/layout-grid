@@ -64,16 +64,21 @@ class LayoutGrid extends HTMLElement {
 
   handleShortcut(event) {
     if (event.key === "g" && event.ctrlKey) {
-      if (this.style.display == "none") {
-        this.style.display = "";
+      if (this.hasAttribute("off")) {
+        this.removeAttribute("off");
       } else {
-        this.style.display = "none";
+        this.setAttribute("off", "");
       }
+      this.render();
     }
   }
 
   render() {
-    if (!this.validateAttr()) {
+    if (!this.validateAttr() || this.hasAttribute("off")) {
+      if (this.container) {
+        this.container.remove();
+        this.container = null;
+      }
       return;
     }
 
@@ -89,8 +94,6 @@ class LayoutGrid extends HTMLElement {
       offset: this.getAttribute("offset"),
       margin: this.getAttribute("margin"),
     };
-
-      console.log(attr);
 
     if (attr.color === "" || attr.color === null) {
       attr.color = "rgba(256, 0, 0, 0.1)";
